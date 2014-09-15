@@ -12,11 +12,14 @@ module FarMar
     def self.all
       vendors = []
       CSV.read("support/vendors.csv").each do |vendor|
-        vendors << FarMar::Sale.new(vendor)
+        vendors << FarMar::Vendor.new(vendor)
       end
       vendors
     end
 
-
+    def market #usually Rachel puts @vendor
+      markets = Market.all
+      markets.find {|market| market.id == @market_id}
+    end
   end
 end

@@ -11,7 +11,7 @@ module FarMar
     def self.all
       products = []
       CSV.read("support/products.csv").each do |product|
-        products << FarMar::Sale.new(product)
+        products << FarMar::Product.new(product)
       end
       sales
     end
