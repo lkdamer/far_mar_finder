@@ -20,5 +20,23 @@ module FarMar
       products = self.all
       products.find {|product| product.id == id}
     end
+
+    def vendor
+      vendors = Vendor.all
+      vendors.find {|vendor| vendor.id == @vendor_id}
+    end
+
+    def sales
+      s = Sales.all
+      s.find_all {|sale| sale.product_id == @id}
+    end
+
+    def number_of_sales
+      sales.count
+    end
+
+    def self.by_vendor(vendor_id)
+      self.all.find_all {|product| product.vendor_id == vendor_id}
+    end
   end
 end

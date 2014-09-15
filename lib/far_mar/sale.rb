@@ -22,6 +22,7 @@ module FarMar
       sales = self.all
       sales.find {|sale| sale.id == id}
     end
+    
 
   end
 end
