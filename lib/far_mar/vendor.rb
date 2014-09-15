@@ -17,9 +17,35 @@ module FarMar
       vendors
     end
 
+    def self.find(id)
+      vendors = self.all
+      vendors.find {|vendor| vendor.id == id}
+    end
+
     def market #usually Rachel puts @vendor
       markets = Market.all
       markets.find {|market| market.id == @market_id}
+    end
+
+    def products
+      products = Product.all
+      products.find_all {|product| product.vendor_id == @id}
+    end
+
+    def sales
+      sales = Sales.all
+      sales.find_all {|sale| sale.vendor_id == @id}
+    end
+
+    def revenue
+      s = sales
+      r = 0
+      s.each {|sale| r += sale.amount}
+      return r
+    end
+
+    def self.by_market(market_id)
+      self.all.collect {|vendor| vendor.market_id == market_id}
     end
   end
 end
