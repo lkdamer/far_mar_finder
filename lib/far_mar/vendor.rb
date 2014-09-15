@@ -11,7 +11,7 @@ module FarMar
 
     def self.all
       vendors = []
-      CSV.read("/../../../support/vendors.csv").each do |vendor|
+      CSV.read("support/vendors.csv").each do |vendor|
         vendors << FarMar::Sale.new(vendor)
       end
       vendors

@@ -14,13 +14,13 @@ module FarMar
 
     def self.all
       markets = []
-      CSV.read("/../../../support/markets.csv").each do |market|
+      CSV.read("support/markets.csv").each do |market|
         markets << FarMar::Market.new(market)
       end
       markets
     end
+
+    
   end
 
 end
-
-FarMar::Market.new

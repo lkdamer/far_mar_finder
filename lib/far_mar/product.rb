@@ -10,7 +10,7 @@ module FarMar
 
     def self.all
       products = []
-      CSV.read("/../../../support/products.csv").each do |product|
+      CSV.read("support/products.csv").each do |product|
         products << FarMar::Sale.new(product)
       end
       sales
