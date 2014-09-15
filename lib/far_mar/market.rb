@@ -20,7 +20,12 @@ module FarMar
       markets
     end
 
-    
+    def self.find(id)
+      markets = self.all
+      markets.find(id)
+    end
+
+
   end
 
 end
