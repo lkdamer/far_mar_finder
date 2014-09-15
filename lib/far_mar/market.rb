@@ -25,7 +25,10 @@ module FarMar
       markets.find {|market| market.id == id}
     end
 
-
+    def vendors
+      vendors = Vendor.all
+      vendors.find_all {|vendor| vendor.market_id == @id}
+    end
   end
 
 end
