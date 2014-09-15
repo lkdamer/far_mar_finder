@@ -3,7 +3,7 @@ module FarMar
     attr_accessor :id, :name, :address, :city, :county, :state, :zip
 
     def initialize(market_array)
-      @id = market_array[0]
+      @id = market_array[0].to_i
       @name = market_array[1]
       @address = market_array[2]
       @city = market_array[3]
@@ -22,7 +22,7 @@ module FarMar
 
     def self.find(id)
       markets = self.all
-      markets.find(id)
+      markets.find {|market| market.id == id}
     end
 
 
