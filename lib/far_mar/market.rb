@@ -46,6 +46,11 @@ module FarMar
       vs = vendors
       vs.max_by {|v| v.revenue}
     end
+
+    def worst_vendor
+      vs = vendors
+      vs.min_by {|v| v.revenue}
+    end
   end
 
 end

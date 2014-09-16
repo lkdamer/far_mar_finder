@@ -8,4 +8,4 @@ require_relative 'far_mar/product'
 require_relative 'far_mar/sale'
 
 ms = FarMar::Market.all
-puts ms[0].preferred_vendor.name
+puts ms[0].worst_vendor.name

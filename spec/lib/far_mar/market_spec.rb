@@ -67,5 +67,9 @@ describe FarMar::Market do
     it "returns the preferred vendor for a market" do
       expect(market.preferred_vendor.name).to eq "Reynolds, Schmitt and Klocko"
     end
+
+    it "returns the worst vendor for a market" do
+      expect(market.worst_vendor.name).to eq "Zulauf and Sons"
+    end
   end
 end
