@@ -23,6 +23,20 @@ module FarMar
       sales.find {|sale| sale.id == id}
     end
 
+    def vendor
+      vendors = Vendor.all
+      vendors.find {|vendor| vendor.id == @vendor_id}
+    end
+
+    def product
+      products = Product.all
+      products.find {|product| product.id == @product_id}
+    end
+
+    def self.between(beginning_time, end_time)
+      boogers = self.all
+      boogers.find_all {|booger| (booger.purchase_time < end_time) && (booger.purchase_time > beginning_time)}
+    end
 
   end
 end

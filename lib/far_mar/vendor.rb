@@ -45,7 +45,7 @@ module FarMar
     end
 
     def self.by_market(market_id)
-      self.all.collect {|vendor| vendor.market_id == market_id}
+      self.all.find_all {|vendor| vendor.market_id == market_id}
     end
   end
 end
