@@ -14,7 +14,7 @@ module FarMar
 
     def self.all
       markets = []
-      CSV.read("support/markets.csv").each do |market|
+      CSV.read("./support/markets.csv").each do |market|
         markets << FarMar::Market.new(market)
       end
       markets
@@ -28,6 +28,13 @@ module FarMar
     def vendors
       vendors = Vendor.all
       vendors.find_all {|vendor| vendor.market_id == @id}
+    end
+
+    def products
+      vs = vendors
+      p =[]
+      vs.each {|v| p += v.products}
+      p
     end
   end
 
