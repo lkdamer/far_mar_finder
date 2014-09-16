@@ -42,6 +42,12 @@ describe FarMar::Vendor do
     end
   end
 
+  describe "instance methods" do
+    it "calculates revenue for vendor" do
+      expect(FarMar::Vendor.all[0].revenue).to eq 38259
+    end
+  end
+
   describe "associations" do
     let(:vendor) { FarMar::Vendor.find(1) }
 

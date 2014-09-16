@@ -63,5 +63,9 @@ describe FarMar::Market do
     it "returns a collection of product instances sold at the market" do
       expect(market.products.first.name).to eq "Dry Beets"
     end
+
+    it "returns the preferred vendor for a market" do
+      expect(market.preferred_vendor.name).to eq "Reynolds, Schmitt and Klocko"
+    end
   end
 end

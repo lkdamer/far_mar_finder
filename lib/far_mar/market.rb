@@ -28,7 +28,6 @@ module FarMar
     def self.search(search_term)
       ms = self.all
       ms.find_all {|m| m.name.downcase.include?(search_term) || m.vendors.find {|v| v.name.downcase.include?(search_term)}}
-      #Show to someone who knows what they're doing.
     end
 
     def vendors
@@ -41,6 +40,11 @@ module FarMar
       p =[]
       vs.each {|v| p += v.products}
       p
+    end
+
+    def preferred_vendor
+      vs = vendors
+      vs.max_by {|v| v.revenue}
     end
   end
 
