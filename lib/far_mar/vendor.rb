@@ -33,7 +33,7 @@ module FarMar
     end
 
     def sales
-      sales = Sales.all
+      sales = Sale.all
       sales.find_all {|sale| sale.vendor_id == @id}
     end
 
