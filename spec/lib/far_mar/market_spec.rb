@@ -13,6 +13,10 @@ describe FarMar::Market do
     it "responds to 'find'" do
       expect(FarMar::Market).to respond_to :find
     end
+
+    it "finds markets with a name, or a vendor name including search term" do
+      expect(FarMar::Market.search("school").count).to eq 3
+    end
   end
 
   describe "attributes" do
