@@ -5,17 +5,19 @@ module FarMar
     def initialize(sales_array)
       @id = sales_array[0].to_i
       @amount = sales_array[1].to_i
-      @purchase_time = Time.parse(sales_array[2])
+      @purchase_time = DateTime.parse(sales_array[2])
       @vendor_id = sales_array[3].to_i
       @product_id = sales_array[4].to_i
     end
 
     def self.all
-      sales = []
-      CSV.read("support/sales.csv").each do |sale|
-        sales << FarMar::Sale.new(sale)
+      if @sales == nil
+        @sales = []
+        CSV.read("support/sales.csv").each do |sale|
+          @sales << FarMar::Sale.new(sale)
+        end
       end
-      sales
+      @sales
     end
 
     def self.find(id)
@@ -35,7 +37,7 @@ module FarMar
 
     def self.between(beginning_time, end_time)
       boogers = self.all
-      boogers.find_all {|booger| (booger.purchase_time < end_time) && (booger.purchase_time > beginning_time)}
+      boogers.find_all {|booger| booger.purchase_time.between?(beginning_time, end_time)}
     end
 
   end

@@ -22,6 +22,27 @@ module FarMar
       vendors.find {|vendor| vendor.id == id}
     end
 
+    def self.by_market(market_id)
+      self.all.find_all {|vendor| vendor.market_id == market_id}
+    end
+
+    def self.most_revenue(n)
+      vs = self.all
+      vs.sort_by {|v| v.revenue}.first(n)
+    end
+
+    def self.most_items(n)
+      vs = self.all
+      vs.sort_by {|v| v.sales.count}.first(n)
+    end
+
+    def self.revenue_date(date)
+      vs = self.all
+      r = 0
+      vs.each {|v| r += v.revenue_by_date(date)}
+      r
+    end
+
     def market #usually Rachel puts @vendor
       markets = Market.all
       markets.find {|market| market.id == @market_id}
@@ -44,7 +65,7 @@ module FarMar
       return r
     end
 
-    def revenue(date)
+    def revenue_by_date(date)
       date1 = DateTime.new(date.year, date.month, date.day, 0, 0, 0, 0)
       date2 = DateTime.new(date.year, date.month, date.day + 1, 0, 0, 0, 0)
       ss = Sale.between(date1, date2)
@@ -54,8 +75,5 @@ module FarMar
       return r
     end
 
-    def self.by_market(market_id)
-      self.all.find_all {|vendor| vendor.market_id == market_id}
-    end
   end
 end

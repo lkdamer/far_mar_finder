@@ -22,6 +22,18 @@ describe FarMar::Vendor do
     it "find the first vendor by market 1" do
       expect(FarMar::Vendor.by_market(100).first.name).to eq "Schiller-Ledner"
     end
+
+    it "finds the top n vendors in terms of revenue" do
+      expect(FarMar::Vendor.most_revenue(1)[0].name).to eq "Homenick, Ryan and Corwin"
+    end
+
+    it "finds the top n vendors in terms of no. of items sold" do
+      expect(FarMar::Vendor.most_items(1)[0].name).to eq "Muller, Rice and Cole"
+    end
+
+    it "finds the total revenue for a given date" do
+      expect(FarMar::Vendor.revenue_date(DateTime.new(2013, 11, 11))).to eq 9156502
+    end
   end
 
   describe "attributes" do

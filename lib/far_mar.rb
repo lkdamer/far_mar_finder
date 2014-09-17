@@ -7,5 +7,5 @@ require_relative 'far_mar/vendor'
 require_relative 'far_mar/product'
 require_relative 'far_mar/sale'
 
-ms = FarMar::Market.all
-puts ms[0].worst_vendor(DateTime.new(2013, 11, 01))
+
+puts FarMar::Vendor.revenue_date(DateTime.new(2013, 11, 11))

@@ -71,5 +71,13 @@ describe FarMar::Market do
     it "returns the worst vendor for a market" do
       expect(market.worst_vendor.name).to eq "Zulauf and Sons"
     end
+
+    it "returns the preferred vendor for a market on given day" do
+      expect(market.preferred_vendor_by_date(DateTime.new(2013, 11, 11)).name).to eq "Kris and Sons"
+    end
+
+    it "returns the worst vendor for a market on a given day" do
+      expect(market.worst_vendor_by_date(DateTime.new(2013, 11, 11)).name).to eq "Hamill, Kilback and Pfeffer"
+    end
   end
 end

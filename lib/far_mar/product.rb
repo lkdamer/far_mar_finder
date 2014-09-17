@@ -21,6 +21,15 @@ module FarMar
       products.find {|product| product.id == id}
     end
 
+    def self.by_vendor(vendor_id)
+      self.all.find_all {|product| product.vendor_id == vendor_id}
+    end
+
+    def self.most_revenue(n)
+      ps = self.all
+      ps.sort_by {|p|}
+    end
+
     def vendor
       vendors = Vendor.all
       vendors.find {|vendor| vendor.id == @vendor_id}
@@ -35,8 +44,5 @@ module FarMar
       sales.count
     end
 
-    def self.by_vendor(vendor_id)
-      self.all.find_all {|product| product.vendor_id == vendor_id}
-    end
   end
 end
