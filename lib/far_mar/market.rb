@@ -30,6 +30,15 @@ module FarMar
       ms.find_all {|m| m.name.downcase.include?(search_term) || m.vendors.find {|v| v.name.downcase.include?(search_term)}}
     end
 
+    def self.find_by_state(st)
+      ms = Market.all
+      ms.find_all {|m| m.state.downcase == st.downcase}
+    end
+
+    def to_s
+      return @name
+    end
+
     def vendors
       vendors = Vendor.all
       vendors.find_all {|vendor| vendor.market_id == @id}

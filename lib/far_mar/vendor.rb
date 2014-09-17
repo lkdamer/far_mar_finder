@@ -24,7 +24,12 @@ module FarMar
 
     def self.find_by_name(n)
       vs = self.all
-      vs.find {|v| v.name.downcase.include?(n.downcase)}
+      vs.find {|v| v.name.downcase == n.downcase}
+    end
+
+    def self.find_by_name_search(search_term)
+      vs = self.all
+      vs.find_all {|v| v.name.downcase.include? search_term.downcase}
     end
 
     def self.by_market(market_id)
@@ -46,6 +51,10 @@ module FarMar
       r = 0
       vs.each {|v| r += v.revenue_by_date(date)}
       r
+    end
+
+    def to_s
+      @name
     end
 
     def market #usually Rachel puts @vendor

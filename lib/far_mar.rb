@@ -7,4 +7,4 @@ require_relative 'far_mar/vendor'
 require_relative 'far_mar/product'
 require_relative 'far_mar/sale'
 
-puts FarMar::Product.find_by_name("Outrageous Burrito")
+puts FarMar::Market.find_by_state("Minnesota")
