@@ -22,6 +22,11 @@ module FarMar
       vendors.find {|vendor| vendor.id == id}
     end
 
+    def self.find_by_name(n)
+      vs = self.all
+      vs.find {|v| v.name.downcase.include?(n.downcase)}
+    end
+
     def self.by_market(market_id)
       self.all.find_all {|vendor| vendor.market_id == market_id}
     end

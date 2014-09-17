@@ -34,6 +34,10 @@ describe FarMar::Vendor do
     it "finds the total revenue for a given date" do
       expect(FarMar::Vendor.revenue_date(DateTime.new(2013, 11, 11))).to eq 9156502
     end
+
+    it "finds the vendor by name [and returns the instance!]" do
+      expect(FarMar::Vendor.find_by_name("Ledner Group").name).to eq "Ledner Group"
+    end
   end
 
   describe "attributes" do

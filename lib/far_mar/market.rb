@@ -25,7 +25,7 @@ module FarMar
       markets.find {|market| market.id == id}
     end
 
-    def self.search(search_term)
+    def self.find_by_name(search_term)
       ms = self.all
       ms.find_all {|m| m.name.downcase.include?(search_term) || m.vendors.find {|v| v.name.downcase.include?(search_term)}}
     end

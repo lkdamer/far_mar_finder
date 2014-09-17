@@ -7,5 +7,4 @@ require_relative 'far_mar/vendor'
 require_relative 'far_mar/product'
 require_relative 'far_mar/sale'
 
-l = FarMar::Product.most_revenue(5)
-l.each {|booger| puts booger.name}
+puts FarMar::Vendor.find_by_name("Ledner Group")

@@ -15,8 +15,9 @@ describe FarMar::Market do
     end
 
     it "finds markets with a name, or a vendor name including search term" do
-      expect(FarMar::Market.search("school").count).to eq 3
+      expect(FarMar::Market.find_by_name("school").count).to eq 3
     end
+
   end
 
   describe "attributes" do
