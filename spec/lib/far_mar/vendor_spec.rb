@@ -38,6 +38,10 @@ describe FarMar::Vendor do
     it "finds the vendor by name [and returns the instance!]" do
       expect(FarMar::Vendor.find_by_name("Ledner Group").name).to eq "Ledner Group"
     end
+
+    it "finds all the vendors with a search term in their name" do
+      expect(FarMar::Vendor.find_by_name_term("Sons").first.name).to eq "Kris and Sons"
+    end
   end
 
   describe "attributes" do

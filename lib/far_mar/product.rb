@@ -32,7 +32,12 @@ module FarMar
 
     def self.find_by_name(n)
       ps = self.all
-      ps.find {|p| p.name.downcase.include?(n.downcase)}
+      ps.find {|p| p.name.downcase == n.downcase}
+    end
+
+    def self.find_by_name_term(term)
+      ps = self.all
+      ps.find_all {|p| p.name.downcase.include?(term.downcase)}
     end
 
     def revenue

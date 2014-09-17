@@ -30,6 +30,10 @@ describe FarMar::Product do
     it "finds the product by name [and returns the instance!]" do
       expect(FarMar::Product.find_by_name("Outrageous Burrito").name).to eq "Outrageous Burrito"
     end
+
+    it "finds all products with search term in the name" do
+      expect(FarMar::Product.find_by_name_term("apple")[0].name).to eq "Green Apples"
+    end
   end
 
   describe "attributes" do

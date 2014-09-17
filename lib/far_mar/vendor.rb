@@ -27,7 +27,7 @@ module FarMar
       vs.find {|v| v.name.downcase == n.downcase}
     end
 
-    def self.find_by_name_search(search_term)
+    def self.find_by_name_term(search_term)
       vs = self.all
       vs.find_all {|v| v.name.downcase.include? search_term.downcase}
     end
