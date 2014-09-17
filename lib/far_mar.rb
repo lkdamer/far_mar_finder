@@ -7,4 +7,4 @@ require_relative 'far_mar/vendor'
 require_relative 'far_mar/product'
 require_relative 'far_mar/sale'
 
-puts FarMar::Vendor.find_by_name("Ledner Group")
+puts FarMar::Product.find_by_name("Outrageous Burrito")

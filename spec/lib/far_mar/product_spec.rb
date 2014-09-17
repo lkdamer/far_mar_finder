@@ -26,6 +26,10 @@ describe FarMar::Product do
     it "returns top products in order of total revenue" do
       expect(FarMar::Product.most_revenue(5)[0].name).to eq "Defeated Fruit"
     end
+
+    it "finds the product by name [and returns the instance!]" do
+      expect(FarMar::Product.find_by_name("Outrageous Burrito").name).to eq "Outrageous Burrito"
+    end
   end
 
   describe "attributes" do

@@ -30,6 +30,11 @@ module FarMar
       ps.sort_by {|p| p.revenue }.first(n)
     end
 
+    def self.find_by_name(n)
+      ps = self.all
+      ps.find {|p| p.name.downcase.include?(n.downcase)}
+    end
+
     def revenue
       ss = sales
       r = 0
