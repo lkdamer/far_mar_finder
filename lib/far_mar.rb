@@ -7,5 +7,5 @@ require_relative 'far_mar/vendor'
 require_relative 'far_mar/product'
 require_relative 'far_mar/sale'
 
-
-puts FarMar::Vendor.revenue_date(DateTime.new(2013, 11, 11))
+l = FarMar::Product.most_revenue(5)
+l.each {|booger| puts booger.name}

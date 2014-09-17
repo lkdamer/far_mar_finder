@@ -22,6 +22,10 @@ describe FarMar::Product do
     it "find the first product by market 1" do
       expect(FarMar::Product.by_vendor(1).first.name).to eq "Dry Beets"
     end
+
+    it "returns top products in order of total revenue" do
+      expect(FarMar::Product.most_revenue(5)[0].name).to eq "Defeated Fruit"
+    end
   end
 
   describe "attributes" do

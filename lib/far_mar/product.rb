@@ -27,7 +27,14 @@ module FarMar
 
     def self.most_revenue(n)
       ps = self.all
-      ps.sort_by {|p|}
+      ps.sort_by {|p| p.revenue }.first(n)
+    end
+
+    def revenue
+      ss = sales
+      r = 0
+      ss.each { |s| r += s.amount }
+      return r
     end
 
     def vendor
