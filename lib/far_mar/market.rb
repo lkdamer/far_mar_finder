@@ -47,14 +47,19 @@ module FarMar
       vs.max_by {|v| v.revenue}
     end
 
-    # def preferred_vendor(date)
-    #   vs = vendors
-    #   coming back to this later!
-    # end
+    def preferred_vendor(date)
+      vs = vendors
+      vs.max_by {|v| v.revenue(date)}
+    end
 
     def worst_vendor
       vs = vendors
       vs.min_by {|v| v.revenue}
+    end
+
+    def worst_vendor(date)
+      vs = vendors
+      vs.min_by {|v| v.revenue(date)}
     end
   end
 
