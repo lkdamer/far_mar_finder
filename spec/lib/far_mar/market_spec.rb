@@ -17,6 +17,10 @@ describe FarMar::Market do
     it "finds markets with a name, or a vendor name including search term" do
       expect(FarMar::Market.find_by_name("school").count).to eq 3
     end
+
+    it "finds all the markets in a given state" do
+      expect(FarMar::Market.find_by_state("Washington")[0].name).to eq "Silverdale Farmers Market"
+    end
   end
 
   describe "attributes" do
@@ -78,6 +82,10 @@ describe FarMar::Market do
 
     it "returns the worst vendor for a market on a given day" do
       expect(market.worst_vendor_by_date(DateTime.new(2013, 11, 11)).name).to eq "Hamill, Kilback and Pfeffer"
+    end
+
+    it "returns a string rep of the market(it's name)" do
+      expect(market.to_s).to eq "People's Co-op Farmers Market"
     end
   end
 end
