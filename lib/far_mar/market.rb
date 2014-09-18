@@ -1,5 +1,22 @@
 module FarMar
-  class Market
+  class FarMarStuff
+    def self.all
+      if @thingy == nil
+        file_name = "./support/#{self.name.to_s.downcase.split("::")[1] + 's'}.csv"
+        @thingy = CSV.read(file_name).collect do |thing|
+          self.new(thing)
+        end
+      end
+      @thingy
+    end
+
+    def self.find(id)
+      thingies = self.all
+      thingies.find { |thingy| thingy.id == id}
+    end
+  end
+
+  class Market < FarMar::FarMarStuff
     attr_accessor :id, :name, :address, :city, :county, :state, :zip
 
     def initialize(market_array)
@@ -12,18 +29,19 @@ module FarMar
       @zip = market_array[6]
     end
 
-    def self.all
-      markets = []
-      CSV.read("./support/markets.csv").each do |market|
-        markets << FarMar::Market.new(market)
-      end
-      markets
-    end
 
-    def self.find(id)
-      markets = self.all
-      markets.find {|market| market.id == id}
-    end
+    # def self.all
+      # markets = []
+      # CSV.read("./support/markets.csv").each do |market|
+        # markets << self.new(market)
+      # end
+      # markets
+    # end
+
+    # def self.find(id)
+      # markets = self.all
+      # markets.find {|market| market.id == id}
+    # end
 
     def self.find_by_name(search_term)
       ms = self.all

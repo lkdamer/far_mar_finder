@@ -1,5 +1,22 @@
 module FarMar
-  class Sale
+  class FarMarStuff
+    def self.all
+      if @thingy == nil
+        file_name = "./support/#{self.name.to_s.downcase.split("::")[1] + 's'}.csv"
+        @thingy = CSV.read(file_name).collect do |thing|
+          self.new(thing)
+        end
+      end
+      @thingy
+    end
+
+    def self.find(id)
+      thingies = self.all
+      thingies.find { |thingy| thingy.id == id}
+    end
+  end
+
+  class Sale < FarMar::FarMarStuff
     attr_accessor :id, :amount, :purchase_time, :vendor_id, :product_id #amount is in cents
 
     def initialize(sales_array)
@@ -10,20 +27,20 @@ module FarMar
       @product_id = sales_array[4].to_i
     end
 
-    def self.all
-      if @sales == nil
-        @sales = []
-        CSV.read("support/sales.csv").each do |sale|
-          @sales << FarMar::Sale.new(sale)
-        end
-      end
-      @sales
-    end
+    # def self.all
+      # if @sales == nil
+        # @sales = []
+        # CSV.read("support/sales.csv").each do |sale|
+          # @sales << FarMar::Sale.new(sale)
+        # end
+      # end
+      # @sales
+    #end
 
-    def self.find(id)
-      sales = self.all
-      sales.find {|sale| sale.id == id}
-    end
+    # def self.find(id)
+    #   sales = self.all
+    #   sales.find {|sale| sale.id == id}
+    # end
 
     def vendor
       vendors = Vendor.all
