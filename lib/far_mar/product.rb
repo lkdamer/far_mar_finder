@@ -1,13 +1,14 @@
 module FarMar
   class FarMarStuff
     def self.all
-      if @thingy == nil
-        file_name = "./support/#{self.name.to_s.downcase.split("::")[1] + 's'}.csv"
-        @thingy = CSV.read(file_name).collect do |thing|
-          self.new(thing)
-        end
+      @thingy ||= make_the_thingies
+    end
+
+    def self.make_the_thingies
+      file_name = "./support/#{self.name.to_s.downcase.split("::")[1] + 's'}.csv"
+      CSV.read(file_name).collect do |thing|
+        self.new(thing)
       end
-      @thingy
     end
 
     def self.find(id)
